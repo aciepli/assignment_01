@@ -41,24 +41,27 @@ class Test_Assignment_01(unittest.TestCase):
 
     def test_assert_truth_with_a_message(self):
         """
-        A test that will fail.
+        A test that will "no longer" fail. The only way this will not 
+        fail is by changing the word in the brackets to False.  We 
+        are adding what will fail. 
         """
-        self.assertFalse(True, 'This should fail, please fix it.')
+        self.assertFalse(False, 'This should fail, please fix it.')
 
     def test_assert_equality(self):
         """
         A test for equality by assigning a value to a variable
-        and evaluating an expression.
+        and evaluating an expression. An Expected value has been added.
         """
-        expected_value = _
+        expected_value = 2
         truth_value = 1 + 1
         self.assertEqual(expected_value, truth_value)
 
     def test_what_are_these_types(self):
         """
         A test to know what the types of the previous fixes were
+        True switched to false
         """
-        self.assertFalse(True, bool)
+        self.assertFalse(False, bool)
 
     def test_assert_string(self):
         """
@@ -66,38 +69,43 @@ class Test_Assignment_01(unittest.TestCase):
         """
         my_string = 'Hello World'
         my_string_length = len(my_string)  # The expression
-        self.assertEqual(10, my_string_length)
+        self.assertEqual(11, my_string_length)
 
     def test_big_integers(self):
         """
-        A test to explore notation of big integers.
+        A test to explore notation of big integers. I removed the 
+        comma.  I was going to add a line that removed the comma but 
+        realized it was just easier to remove the comma. x.replace(',','') 
+        commas are generally used to deliniate
         """
-        x = 42,000
+        x = 42000
         self.assertTrue(isinstance(x, int))
 
     def test_bigger_integers(self):
         """
-        A test for bigger, or smaller integers
+        A test for bigger, or smaller integers  
+        I changed the assert to GreaterEqual and LessEqual to use better verification
         """
         big = 1e6
-        self.assertEqual(big, 100)
+        self.assertGreaterEqual(big, 100)
         self.assertTrue(type(big), int)
 
         small = 1e-5
-        self.assertEqual(small, 0.0001)
+        self.assertLessEqual(small, 0.0001)
         self.assertTrue(type(small), int)
 
     def test_type_conversion(self):
         """
         A series of tests to validate type conversion operations
+        changed last line to not equals for false str
         """
         i = 1
         self.assertTrue(type(i) == int)
-        self.assertTrue(isinstance(i, float))  # These lines do the same type checking
+        self.assertTrue(isinstance(i, int))  # These lines do the same type checking
         i = float(i)
         self.assertTrue(isinstance(i, float))
         i = str(i)
-        self.assertFalse(type(i) == str)
+        self.assertFalse(type(i) != str)
 
     def test_type_conversion2(self):
         """
@@ -111,10 +119,11 @@ class Test_Assignment_01(unittest.TestCase):
     def test_type_conversion_gotcha(self):
         """
         A test to show how rounding can get you
+        it rounds down
         """
         j = 3.9999
         self.assertTrue(int(j), float)
-        self.assertEqual(int(j), 4)
+        self.assertEqual(int(j), 3)
 
     def tearDown(self):
         """
